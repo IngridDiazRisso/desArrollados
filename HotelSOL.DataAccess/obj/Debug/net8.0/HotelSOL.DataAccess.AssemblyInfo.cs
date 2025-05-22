@@ -14,11 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HotelSOL.DataAccess")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-<<<<<<< Updated upstream
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9dea782f0b4562c732b123b54762979515db5787")]
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bfd9ba02104e9f8dbf98501a9cfe011dcb3b147c")]
->>>>>>> Stashed changes
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+86f01cdf35974a0f5a48609ce63d033d8ece3ae8")]
 [assembly: System.Reflection.AssemblyProductAttribute("HotelSOL.DataAccess")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HotelSOL.DataAccess")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
