@@ -398,7 +398,6 @@ D:\HotelSOL\HotelSOL1.FormsAPP\HotelSOL1.FormsAPP\bin\Debug\net8.0-windows\runti
 D:\HotelSOL\HotelSOL1.FormsAPP\HotelSOL1.FormsAPP\bin\Debug\net8.0-windows\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
 D:\HotelSOL\HotelSOL1.FormsAPP\HotelSOL1.FormsAPP\bin\Debug\net8.0-windows\HotelSOL.DataAccess.dll
 D:\HotelSOL\HotelSOL1.FormsAPP\HotelSOL1.FormsAPP\bin\Debug\net8.0-windows\HotelSOL.DataAccess.pdb
-D:\HotelSOL\HotelSOL1.FormsAPP\HotelSOL1.FormsAPP\obj\Debug\net8.0-windows\HotelSOL1.FormsAPP.ContabilidadForm.resources
 D:\HotelSOL\HotelSOL1.FormsAPP\HotelSOL1.FormsAPP\obj\Debug\net8.0-windows\HotelSOL1.FormsAPP.CrearReservaForm.resources
 D:\HotelSOL\HotelSOL1.FormsAPP\HotelSOL1.FormsAPP\obj\Debug\net8.0-windows\HotelSOL1.FormsAPP.ExportarOdooForm.resources
 D:\HotelSOL\HotelSOL1.FormsAPP\HotelSOL1.FormsAPP\obj\Debug\net8.0-windows\HotelSOL1.FormsAPP.GenerarFacturaForm.resources
@@ -430,4 +429,4 @@ D:\HotelSOL\HotelSOL1.FormsAPP\HotelSOL1.FormsAPP\obj\Debug\net8.0-windows\Hotel
 D:\HotelSOL\HotelSOL1.FormsAPP\HotelSOL1.FormsAPP\obj\Debug\net8.0-windows\HotelSOL1.FormsAPP.PedidoDialogForm.resources
 D:\HotelSOL\HotelSOL1.FormsAPP\HotelSOL1.FormsAPP\obj\Debug\net8.0-windows\HotelSOL1.FormsAPP.ProveedorDialogForm.resources
 D:\HotelSOL\HotelSOL1.FormsAPP\HotelSOL1.FormsAPP\obj\Debug\net8.0-windows\HotelSOL1.FormsAPP.ProveedoresForm.resources
-D:\HotelSOL\HotelSOL1.FormsAPP\HotelSOL1.FormsAPP\obj\Debug\net8.0-windows\HotelSOL1.FormsAPP.AsientoContableDialogForm.resources
+D:\HotelSOL\HotelSOL1.FormsAPP\HotelSOL1.FormsAPP\obj\Debug\net8.0-windows\HotelSOL1.FormsAPP.AlbaranDialogForm.resources

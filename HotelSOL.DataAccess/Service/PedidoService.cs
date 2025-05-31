@@ -1,5 +1,4 @@
-﻿// HotelSOL.DataAccess/Service/PedidoService.cs
-using HotelSOL.DataAccess.Models;
+﻿using HotelSOL.DataAccess.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace HotelSOL.DataAccess.Service
@@ -13,21 +12,23 @@ namespace HotelSOL.DataAccess.Service
             _ctx = ctx ?? throw new ArgumentNullException(nameof(ctx));
         }
 
-        /// <summary>Trae todos los pedidos con su proveedor.</summary>
+        /// <summary>Trae todos los pedidos con su proveedor</summary>
         public List<Pedido> GetAll()
         {
             return _ctx.Pedidos
-                       .Include(p => p.Proveedor)
+                       .Include(p => p.Proveedor)   // <-- cargamos el Proveedor
                        .OrderBy(p => p.Id)
                        .ToList();
         }
 
+        /// <summary>Añade un nuevo pedido</summary>
         public void Add(Pedido ped)
         {
             _ctx.Pedidos.Add(ped);
             _ctx.SaveChanges();
         }
 
+        /// <summary>Elimina un pedido por Id</summary>
         public void Delete(int id)
         {
             var e = _ctx.Pedidos.Find(id);

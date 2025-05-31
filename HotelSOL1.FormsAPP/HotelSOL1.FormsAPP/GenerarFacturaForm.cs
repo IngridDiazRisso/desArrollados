@@ -190,8 +190,7 @@ namespace HotelSOL1.FormsAPP
 
             int facturaId = int.Parse(lblFacturaId.Text.Replace("Factura ID: ", "").Trim());
             var ctx = Program.DbContext;
-            var contService = new ContabilidadService(ctx);
-            var pagoService = new PagoService(ctx, contService);
+            var pagoService = new PagoService(ctx);
             var pagoForm = new PagoForm(facturaId, pagoService);
             pagoForm.ShowDialog();
         }

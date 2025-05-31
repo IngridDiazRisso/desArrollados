@@ -1,4 +1,6 @@
-﻿namespace HotelSOL.DataAccess.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace HotelSOL.DataAccess.Models
 {
     public class Pedido
     {
@@ -7,6 +9,9 @@
         public decimal PrecioTotal { get; set; }
         public string? Albaran { get; set; }
         public string? Factura { get; set; }
+        [NotMapped]
+        public string NombreProveedor
+        => Proveedor?.Nombre ?? "(sin proveedor)";
 
         public Proveedor Proveedor { get; set; } = null!;
         public ICollection<Albaran> Albaranes { get; set; } = new List<Albaran>();

@@ -31,19 +31,18 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PedidosForm));
             dgvPedidos = new DataGridView();
-            btnCrearPedido = new Button();
-            btnEliminarPedido = new Button();
-            btnVolver = new Button();
-            labelPedidos = new Label();
-            pedidoBindingSource = new BindingSource(components);
             idDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             idProveedorDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             precioTotalDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             albaranDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             facturaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             proveedorDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            albaranesDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             facturasProveedoresDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            pedidoBindingSource = new BindingSource(components);
+            btnCrearPedido = new Button();
+            btnEliminarPedido = new Button();
+            btnVolver = new Button();
+            labelPedidos = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvPedidos).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pedidoBindingSource).BeginInit();
             SuspendLayout();
@@ -52,63 +51,20 @@
             // 
             dgvPedidos.AutoGenerateColumns = false;
             dgvPedidos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvPedidos.Columns.AddRange(new DataGridViewColumn[] { idDataGridViewTextBoxColumn, idProveedorDataGridViewTextBoxColumn, precioTotalDataGridViewTextBoxColumn, albaranDataGridViewTextBoxColumn, facturaDataGridViewTextBoxColumn, proveedorDataGridViewTextBoxColumn, albaranesDataGridViewTextBoxColumn, facturasProveedoresDataGridViewTextBoxColumn });
+            dgvPedidos.Columns.AddRange(new DataGridViewColumn[] { idDataGridViewTextBoxColumn, idProveedorDataGridViewTextBoxColumn, precioTotalDataGridViewTextBoxColumn, albaranDataGridViewTextBoxColumn, facturaDataGridViewTextBoxColumn, proveedorDataGridViewTextBoxColumn, facturasProveedoresDataGridViewTextBoxColumn });
             dgvPedidos.DataSource = pedidoBindingSource;
-            dgvPedidos.Location = new Point(68, 127);
+            dgvPedidos.Location = new Point(12, 105);
             dgvPedidos.Name = "dgvPedidos";
             dgvPedidos.RowHeadersWidth = 51;
-            dgvPedidos.Size = new Size(505, 242);
+            dgvPedidos.Size = new Size(896, 479);
             dgvPedidos.TabIndex = 0;
-            // 
-            // btnCrearPedido
-            // 
-            btnCrearPedido.Location = new Point(599, 191);
-            btnCrearPedido.Name = "btnCrearPedido";
-            btnCrearPedido.Size = new Size(158, 43);
-            btnCrearPedido.TabIndex = 2;
-            btnCrearPedido.Text = "Crear Pedido";
-            btnCrearPedido.UseVisualStyleBackColor = true;
-            // 
-            // btnEliminarPedido
-            // 
-            btnEliminarPedido.Location = new Point(599, 254);
-            btnEliminarPedido.Name = "btnEliminarPedido";
-            btnEliminarPedido.Size = new Size(158, 43);
-            btnEliminarPedido.TabIndex = 3;
-            btnEliminarPedido.Text = "Eliminar Pedido";
-            btnEliminarPedido.UseVisualStyleBackColor = true;
-            // 
-            // btnVolver
-            // 
-            btnVolver.Location = new Point(599, 314);
-            btnVolver.Name = "btnVolver";
-            btnVolver.Size = new Size(158, 43);
-            btnVolver.TabIndex = 4;
-            btnVolver.Text = "Volver";
-            btnVolver.UseVisualStyleBackColor = true;
-            btnVolver.Click += btnVolver_Click;
-            // 
-            // labelPedidos
-            // 
-            labelPedidos.AutoSize = true;
-            labelPedidos.BackColor = Color.Transparent;
-            labelPedidos.Font = new Font("Segoe UI", 14F);
-            labelPedidos.ForeColor = Color.Black;
-            labelPedidos.Location = new Point(68, 70);
-            labelPedidos.Name = "labelPedidos";
-            labelPedidos.Size = new Size(97, 32);
-            labelPedidos.TabIndex = 5;
-            labelPedidos.Text = "Pedidos";
-            // 
-            // pedidoBindingSource
-            // 
-            pedidoBindingSource.DataSource = typeof(HotelSOL.DataAccess.Models.Pedido);
+            
             // 
             // idDataGridViewTextBoxColumn
             // 
             idDataGridViewTextBoxColumn.DataPropertyName = "Id";
             idDataGridViewTextBoxColumn.HeaderText = "Id";
-            idDataGridViewTextBoxColumn.MinimumWidth = 6;
+            idDataGridViewTextBoxColumn.MinimumWidth = 2;
             idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
             idDataGridViewTextBoxColumn.Width = 125;
             // 
@@ -116,7 +72,7 @@
             // 
             idProveedorDataGridViewTextBoxColumn.DataPropertyName = "IdProveedor";
             idProveedorDataGridViewTextBoxColumn.HeaderText = "IdProveedor";
-            idProveedorDataGridViewTextBoxColumn.MinimumWidth = 6;
+            idProveedorDataGridViewTextBoxColumn.MinimumWidth = 4;
             idProveedorDataGridViewTextBoxColumn.Name = "idProveedorDataGridViewTextBoxColumn";
             idProveedorDataGridViewTextBoxColumn.Width = 125;
             // 
@@ -124,7 +80,7 @@
             // 
             precioTotalDataGridViewTextBoxColumn.DataPropertyName = "PrecioTotal";
             precioTotalDataGridViewTextBoxColumn.HeaderText = "PrecioTotal";
-            precioTotalDataGridViewTextBoxColumn.MinimumWidth = 6;
+            precioTotalDataGridViewTextBoxColumn.MinimumWidth = 3;
             precioTotalDataGridViewTextBoxColumn.Name = "precioTotalDataGridViewTextBoxColumn";
             precioTotalDataGridViewTextBoxColumn.Width = 125;
             // 
@@ -146,19 +102,12 @@
             // 
             // proveedorDataGridViewTextBoxColumn
             // 
-            proveedorDataGridViewTextBoxColumn.DataPropertyName = "Proveedor";
+            proveedorDataGridViewTextBoxColumn.DataPropertyName = "NombreProveedor";
             proveedorDataGridViewTextBoxColumn.HeaderText = "Proveedor";
             proveedorDataGridViewTextBoxColumn.MinimumWidth = 6;
             proveedorDataGridViewTextBoxColumn.Name = "proveedorDataGridViewTextBoxColumn";
             proveedorDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // albaranesDataGridViewTextBoxColumn
-            // 
-            albaranesDataGridViewTextBoxColumn.DataPropertyName = "Albaranes";
-            albaranesDataGridViewTextBoxColumn.HeaderText = "Albaranes";
-            albaranesDataGridViewTextBoxColumn.MinimumWidth = 6;
-            albaranesDataGridViewTextBoxColumn.Name = "albaranesDataGridViewTextBoxColumn";
-            albaranesDataGridViewTextBoxColumn.Width = 125;
+     
             // 
             // facturasProveedoresDataGridViewTextBoxColumn
             // 
@@ -168,13 +117,57 @@
             facturasProveedoresDataGridViewTextBoxColumn.Name = "facturasProveedoresDataGridViewTextBoxColumn";
             facturasProveedoresDataGridViewTextBoxColumn.Width = 125;
             // 
+            // pedidoBindingSource
+            // 
+            pedidoBindingSource.DataSource = typeof(HotelSOL.DataAccess.Models.Pedido);
+            // 
+            // btnCrearPedido
+            // 
+            btnCrearPedido.Location = new Point(979, 149);
+            btnCrearPedido.Name = "btnCrearPedido";
+            btnCrearPedido.Size = new Size(158, 43);
+            btnCrearPedido.TabIndex = 2;
+            btnCrearPedido.Text = "Crear Pedido";
+            btnCrearPedido.UseVisualStyleBackColor = true;
+            // 
+            // btnEliminarPedido
+            // 
+            btnEliminarPedido.Location = new Point(979, 212);
+            btnEliminarPedido.Name = "btnEliminarPedido";
+            btnEliminarPedido.Size = new Size(158, 43);
+            btnEliminarPedido.TabIndex = 3;
+            btnEliminarPedido.Text = "Eliminar Pedido";
+            btnEliminarPedido.UseVisualStyleBackColor = true;
+            // 
+            // btnVolver
+            // 
+            btnVolver.Location = new Point(979, 272);
+            btnVolver.Name = "btnVolver";
+            btnVolver.Size = new Size(158, 43);
+            btnVolver.TabIndex = 4;
+            btnVolver.Text = "Volver";
+            btnVolver.UseVisualStyleBackColor = true;
+            btnVolver.Click += btnVolver_Click;
+            // 
+            // labelPedidos
+            // 
+            labelPedidos.AutoSize = true;
+            labelPedidos.BackColor = Color.Transparent;
+            labelPedidos.Font = new Font("Segoe UI", 14F);
+            labelPedidos.ForeColor = Color.Black;
+            labelPedidos.Location = new Point(406, 56);
+            labelPedidos.Name = "labelPedidos";
+            labelPedidos.Size = new Size(97, 32);
+            labelPedidos.TabIndex = 5;
+            labelPedidos.Text = "Pedidos";
+            // 
             // PedidosForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1236, 619);
             Controls.Add(labelPedidos);
             Controls.Add(btnVolver);
             Controls.Add(btnEliminarPedido);
@@ -201,7 +194,6 @@
         private DataGridViewTextBoxColumn albaranDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn facturaDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn proveedorDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn albaranesDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn facturasProveedoresDataGridViewTextBoxColumn;
         private BindingSource pedidoBindingSource;
     }

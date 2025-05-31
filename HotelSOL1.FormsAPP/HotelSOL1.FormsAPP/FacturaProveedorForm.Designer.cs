@@ -10,6 +10,7 @@ namespace HotelSOL1.FormsAPP
         private Button btnVerFactura;
         private Button btnVolver;
         private BindingSource facturaProveedorBindingSource;
+        private Button btnNuevoAlbaran;
 
         protected override void Dispose(bool disposing)
         {
@@ -19,83 +20,114 @@ namespace HotelSOL1.FormsAPP
 
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.facturaProveedorBindingSource = new BindingSource(this.components);
-            this.dgvFacturasProv = new DataGridView();
-            this.btnGenerarFact = new Button();
-            this.btnVerFactura = new Button();
-            this.btnVolver = new Button();
-
-            ((ISupportInitialize)(this.dgvFacturasProv)).BeginInit();
-            ((ISupportInitialize)(this.facturaProveedorBindingSource)).BeginInit();
-            this.SuspendLayout();
-
+            components = new Container();
+            ComponentResourceManager resources = new ComponentResourceManager(typeof(FacturaProveedorForm));
+            facturaProveedorBindingSource = new BindingSource(components);
+            dgvFacturasProv = new DataGridView();
+            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
+            btnGenerarFact = new Button();
+            btnVerFactura = new Button();
+            btnVolver = new Button();
+            btnNuevoAlbaran = new Button();
+            ((ISupportInitialize)facturaProveedorBindingSource).BeginInit();
+            ((ISupportInitialize)dgvFacturasProv).BeginInit();
+            SuspendLayout();
             // 
             // dgvFacturasProv
             // 
-            this.dgvFacturasProv.AutoGenerateColumns = false;
-            this.dgvFacturasProv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvFacturasProv.Columns.AddRange(new DataGridViewColumn[]
-            {
-                new DataGridViewTextBoxColumn { DataPropertyName = "Id",           Name = "Id",           HeaderText = "ID",        MinimumWidth = 6, Width = 125 },
-                new DataGridViewTextBoxColumn { DataPropertyName = "IdProveedor", Name = "IdProveedor", HeaderText = "Proveedor", MinimumWidth = 6, Width = 125 },
-                new DataGridViewTextBoxColumn { DataPropertyName = "IdPedido",    Name = "IdPedido",    HeaderText = "Pedido",    MinimumWidth = 6, Width = 125 },
-                new DataGridViewTextBoxColumn { DataPropertyName = "IdAlbaran",   Name = "IdAlbaran",   HeaderText = "Albarán",   MinimumWidth = 6, Width = 125 },
-            });
-            this.dgvFacturasProv.DataSource = this.facturaProveedorBindingSource;
-            this.dgvFacturasProv.Location = new Point(24, 56);
-            this.dgvFacturasProv.Name = "dgvFacturasProv";
-            this.dgvFacturasProv.RowHeadersWidth = 51;
-            this.dgvFacturasProv.Size = new Size(600, 300);
-            this.dgvFacturasProv.TabIndex = 0;
-
+            dgvFacturasProv.AutoGenerateColumns = false;
+            dgvFacturasProv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvFacturasProv.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4 });
+            dgvFacturasProv.DataSource = facturaProveedorBindingSource;
+            dgvFacturasProv.Location = new Point(24, 56);
+            dgvFacturasProv.Name = "dgvFacturasProv";
+            dgvFacturasProv.RowHeadersWidth = 51;
+            dgvFacturasProv.Size = new Size(970, 505);
+            dgvFacturasProv.TabIndex = 0;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            dataGridViewTextBoxColumn1.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            dataGridViewTextBoxColumn2.MinimumWidth = 6;
+            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            dataGridViewTextBoxColumn2.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            dataGridViewTextBoxColumn3.MinimumWidth = 6;
+            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            dataGridViewTextBoxColumn3.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            dataGridViewTextBoxColumn4.MinimumWidth = 6;
+            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            dataGridViewTextBoxColumn4.Width = 125;
             // 
             // btnGenerarFact
             // 
-            this.btnGenerarFact.Location = new Point(640, 80);
-            this.btnGenerarFact.Name = "btnGenerarFact";
-            this.btnGenerarFact.Size = new Size(140, 40);
-            this.btnGenerarFact.TabIndex = 1;
-            this.btnGenerarFact.Text = "Generar factura";
-            this.btnGenerarFact.UseVisualStyleBackColor = true;
-
+            btnGenerarFact.Location = new Point(1019, 66);
+            btnGenerarFact.Name = "btnGenerarFact";
+            btnGenerarFact.Size = new Size(140, 40);
+            btnGenerarFact.TabIndex = 1;
+            btnGenerarFact.Text = "Generar factura";
+            btnGenerarFact.UseVisualStyleBackColor = true;
             // 
             // btnVerFactura
             // 
-            this.btnVerFactura.Location = new Point(640, 140);
-            this.btnVerFactura.Name = "btnVerFactura";
-            this.btnVerFactura.Size = new Size(140, 40);
-            this.btnVerFactura.TabIndex = 2;
-            this.btnVerFactura.Text = "Ver factura";
-            this.btnVerFactura.UseVisualStyleBackColor = true;
-
+            btnVerFactura.Location = new Point(1019, 126);
+            btnVerFactura.Name = "btnVerFactura";
+            btnVerFactura.Size = new Size(140, 40);
+            btnVerFactura.TabIndex = 2;
+            btnVerFactura.Text = "Ver factura";
+            btnVerFactura.UseVisualStyleBackColor = true;
             // 
             // btnVolver
             // 
-            this.btnVolver.Location = new Point(640, 200);
-            this.btnVolver.Name = "btnVolver";
-            this.btnVolver.Size = new Size(140, 40);
-            this.btnVolver.TabIndex = 3;
-            this.btnVolver.Text = "Volver";
-            this.btnVolver.UseVisualStyleBackColor = true;
-
+            btnVolver.Location = new Point(1019, 186);
+            btnVolver.Name = "btnVolver";
+            btnVolver.Size = new Size(140, 40);
+            btnVolver.TabIndex = 3;
+            btnVolver.Text = "Volver";
+            btnVolver.UseVisualStyleBackColor = true;
+            // 
+            // btnNuevoAlbaran
+            // 
+            btnNuevoAlbaran.Location = new Point(1019, 244);
+            btnNuevoAlbaran.Name = "btnNuevoAlbaran";
+            btnNuevoAlbaran.Size = new Size(140, 40);
+            btnNuevoAlbaran.TabIndex = 4;
+            btnNuevoAlbaran.Text = "Ver Albaranes";
+            btnNuevoAlbaran.UseVisualStyleBackColor = true;
             // 
             // FacturaProveedorForm
             // 
-            this.AutoScaleDimensions = new SizeF(8F, 20F);
-            this.AutoScaleMode = AutoScaleMode.Font;
-            this.ClientSize = new Size(820, 380);
-            this.Controls.AddRange(new Control[] {
-                this.dgvFacturasProv,
-                this.btnGenerarFact,
-                this.btnVerFactura,
-                this.btnVolver
-            });
-            this.Name = "FacturaProveedorForm";
-            this.Text = "Facturas de Proveedores";
-            ((ISupportInitialize)(this.dgvFacturasProv)).EndInit();
-            ((ISupportInitialize)(this.facturaProveedorBindingSource)).EndInit();
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            ClientSize = new Size(1258, 626);
+            Controls.Add(dgvFacturasProv);
+            Controls.Add(btnGenerarFact);
+            Controls.Add(btnVerFactura);
+            Controls.Add(btnVolver);
+            Controls.Add(btnNuevoAlbaran);
+            Name = "FacturaProveedorForm";
+            Text = "Facturas de Proveedores";
+            ((ISupportInitialize)facturaProveedorBindingSource).EndInit();
+            ((ISupportInitialize)dgvFacturasProv).EndInit();
+            ResumeLayout(false);
         }
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
     }
 }

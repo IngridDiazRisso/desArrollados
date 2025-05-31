@@ -1,12 +1,11 @@
-﻿namespace HotelSOL1.FormsAPP
+﻿// FacturaProveedorDialogForm.Designer.cs
+namespace HotelSOL1.FormsAPP
 {
     partial class FacturaProveedorDialogForm
     {
         private System.ComponentModel.IContainer components;
-        private Label lblPedido;
-        private ComboBox cmbPedido;
-        private Label lblAlbaran;
-        private ComboBox cmbAlbaran;
+        private DataGridView dgvPedidos;
+        private DataGridView dgvAlbaranes;
         private Button btnOK;
         private Button btnCancel;
 
@@ -18,27 +17,66 @@
 
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
-            lblPedido = new Label { Text = "Pedido:", Location = new Point(12, 15), AutoSize = true };
-            cmbPedido = new ComboBox { Location = new Point(100, 12), Width = 200, DropDownStyle = ComboBoxStyle.DropDownList };
-            lblAlbaran = new Label { Text = "Albarán:", Location = new Point(12, 50), AutoSize = true };
-            cmbAlbaran = new ComboBox { Location = new Point(100, 47), Width = 200, DropDownStyle = ComboBoxStyle.DropDownList };
-            btnOK = new Button { Text = "Generar", Location = new Point(60, 90), DialogResult = DialogResult.OK, Width = 100 };
-            btnCancel = new Button { Text = "Cancelar", Location = new Point(180, 90), DialogResult = DialogResult.Cancel, Width = 100 };
-
-            AcceptButton = btnOK;
-            CancelButton = btnCancel;
-            ClientSize = new Size(320, 140);
-            FormBorderStyle = FormBorderStyle.FixedDialog;
-            StartPosition = FormStartPosition.CenterParent;
-            Text = "Nueva Factura Proveedor";
-
-            Controls.AddRange(new Control[]
-            {
-                lblPedido, cmbPedido,
-                lblAlbaran, cmbAlbaran,
-                btnOK, btnCancel
-            });
+            this.dgvPedidos = new DataGridView();
+            this.dgvAlbaranes = new DataGridView();
+            this.btnOK = new Button();
+            this.btnCancel = new Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPedidos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAlbaranes)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // dgvPedidos
+            // 
+            this.dgvPedidos.Location = new Point(12, 12);
+            this.dgvPedidos.Name = "dgvPedidos";
+            this.dgvPedidos.Size = new Size(400, 200);
+            this.dgvPedidos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            this.dgvPedidos.MultiSelect = false;
+            this.dgvPedidos.ReadOnly = true;
+            this.dgvPedidos.AutoGenerateColumns = true;
+            // 
+            // dgvAlbaranes
+            // 
+            this.dgvAlbaranes.Location = new Point(12, 230);
+            this.dgvAlbaranes.Name = "dgvAlbaranes";
+            this.dgvAlbaranes.Size = new Size(400, 200);
+            this.dgvAlbaranes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            this.dgvAlbaranes.MultiSelect = false;
+            this.dgvAlbaranes.ReadOnly = true;
+            this.dgvAlbaranes.AutoGenerateColumns = true;
+            // 
+            // btnOK
+            // 
+            this.btnOK.Location = new Point(430, 12);
+            this.btnOK.Name = "btnOK";
+            this.btnOK.Size = new Size(100, 30);
+            this.btnOK.Text = "Aceptar";
+            this.btnOK.UseVisualStyleBackColor = true;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new Point(430, 60);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new Size(100, 30);
+            this.btnCancel.Text = "Cancelar";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            // 
+            // FacturaProveedorDialogForm
+            // 
+            this.AcceptButton = this.btnOK;
+            this.CancelButton = this.btnCancel;
+            this.ClientSize = new Size(550, 450);
+            this.Controls.Add(this.dgvPedidos);
+            this.Controls.Add(this.dgvAlbaranes);
+            this.Controls.Add(this.btnOK);
+            this.Controls.Add(this.btnCancel);
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
+            this.Name = "FacturaProveedorDialogForm";
+            this.StartPosition = FormStartPosition.CenterParent;
+            this.Text = "Nueva Factura Proveedor";
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPedidos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAlbaranes)).EndInit();
+            this.ResumeLayout(false);
         }
     }
 }

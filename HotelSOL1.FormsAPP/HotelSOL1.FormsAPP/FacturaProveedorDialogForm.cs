@@ -1,4 +1,7 @@
-﻿using HotelSOL.DataAccess.Models;
+﻿// FacturaProveedorDialogForm.cs
+using System;
+using System.Windows.Forms;
+using HotelSOL.DataAccess.Models;
 using HotelSOL.DataAccess.Service;
 
 namespace HotelSOL1.FormsAPP
@@ -15,51 +18,53 @@ namespace HotelSOL1.FormsAPP
             AlbaranService albaranService)
         {
             InitializeComponent();
+
             _pedidoService = pedidoService ?? throw new ArgumentNullException(nameof(pedidoService));
             _albaranService = albaranService ?? throw new ArgumentNullException(nameof(albaranService));
 
-            // Carga pedidos
-            cmbPedido.DataSource = _pedidoService.GetAll();
-            cmbPedido.DisplayMember = "Id";
-            cmbPedido.ValueMember = "Id";
-
-            // Al cambiar pedido, recarga albaranes correspondientes
-            cmbPedido.SelectedIndexChanged += (_, __) =>
-            {
-                if (cmbPedido.SelectedItem is Pedido p)
-                {
-                    cmbAlbaran.DataSource = _albaranService.GetByPedidoId(p.Id);
-                    cmbAlbaran.DisplayMember = "Id";
-                    cmbAlbaran.ValueMember = "Id";
-                }
-            };
-
-            // Botón OK
+            // 1) Suscribimos evento de selección antes de asignar DataSource
+            dgvPedidos.SelectionChanged += DgvPedidos_SelectionChanged;
             btnOK.Click += BtnOK_Click;
+            btnCancel.Click += (_, __) => DialogResult = DialogResult.Cancel;
+
+            // 2) Cargamos pedidos
+            dgvPedidos.DataSource = _pedidoService.GetAll();
+        }
+
+        private void DgvPedidos_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvPedidos.CurrentRow?.DataBoundItem is Pedido pedido)
+            {
+                // 3) Cuando cambia el pedido, recargamos los albaranes
+                dgvAlbaranes.DataSource = _albaranService.GetByPedidoId(pedido.Id);
+            }
+            else
+            {
+                dgvAlbaranes.DataSource = null;
+            }
         }
 
         private void BtnOK_Click(object sender, EventArgs e)
         {
-            if (!(cmbPedido.SelectedItem is Pedido p))
+            if (!(dgvPedidos.CurrentRow?.DataBoundItem is Pedido selPedido))
             {
-                MessageBox.Show("Debes elegir un pedido.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                DialogResult = DialogResult.None;
+                MessageBox.Show("Debes seleccionar un pedido.", "Validación",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if (!(cmbAlbaran.SelectedItem is Albaran a))
+            if (!(dgvAlbaranes.CurrentRow?.DataBoundItem is Albaran selAlbaran))
             {
-                MessageBox.Show("Debes elegir un albarán.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                DialogResult = DialogResult.None;
+                MessageBox.Show("Debes seleccionar un albarán.", "Validación",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             FacturaItem = new FacturaProveedor
             {
-                IdProveedor = p.IdProveedor,
-                IdPedido = p.Id,
-                IdAlbaran = a.Id
+                IdProveedor = selPedido.IdProveedor,
+                IdPedido = selPedido.Id,
+                IdAlbaran = selAlbaran.Id
             };
-
             DialogResult = DialogResult.OK;
         }
     }

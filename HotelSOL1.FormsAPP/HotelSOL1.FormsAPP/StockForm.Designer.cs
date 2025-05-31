@@ -96,6 +96,7 @@
             btnModificar.TabIndex = 1;
             btnModificar.Text = "Modificar entrada";
             btnModificar.UseVisualStyleBackColor = true;
+            
             // 
             // btnAnadir
             // 

@@ -2,6 +2,7 @@
 using HotelSOL.DataAccess.Models;
 using HotelSOL.DataAccess.Service;
 using System.ComponentModel;
+using Microsoft.EntityFrameworkCore; // <- para Include, si lo necesitaras aquí
 
 namespace HotelSOL1.FormsAPP
 {
@@ -24,17 +25,29 @@ namespace HotelSOL1.FormsAPP
 
         private void PedidosForm_Load(object sender, EventArgs e)
         {
+            // 1) obtenemos ya con Include(proveedor)
             var datos = _service.GetAll();
             _lista = new BindingList<Pedido>(datos);
             _bs.DataSource = _lista;
             dgvPedidos.DataSource = _bs;
 
-            // Ajusta un par de columnas
+            // 2) Ajustes de columnas
             if (dgvPedidos.Columns["Id"] != null)
                 dgvPedidos.Columns["Id"].HeaderText = "ID";
 
+            // Esta columna la vamos a enlazar al Nombre del proveedor
             if (dgvPedidos.Columns["Proveedor"] != null)
-                dgvPedidos.Columns["Proveedor"].HeaderText = "Proveedor";
+            {
+                var colProv = dgvPedidos.Columns["Proveedor"];
+                colProv.HeaderText = "Proveedor";
+                colProv.DataPropertyName = "Proveedor.Nombre";
+            }
+
+            // Ocultamos las propiedades de navegación que no hacen falta
+            if (dgvPedidos.Columns["Albaranes"] != null)
+                dgvPedidos.Columns["Albaranes"].Visible = false;
+            if (dgvPedidos.Columns["FacturasProveedores"] != null)
+                dgvPedidos.Columns["FacturasProveedores"].Visible = false;
         }
 
         private void BtnCrearPedido_Click(object sender, EventArgs e)
@@ -60,7 +73,7 @@ namespace HotelSOL1.FormsAPP
                 _lista.Remove(sel);
             }
         }
-        private void btnVolver_Click(object? sender, EventArgs e)
+        private void btnVolver_Click(object sender, EventArgs e)
         {
             this.Close();
         }

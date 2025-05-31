@@ -26,6 +26,7 @@ namespace HotelSOL1.FormsAPP
             btnGenerarFact.Click += BtnGenerarFact_Click;
             btnVerFactura.Click += BtnVerFactura_Click;
             btnVolver.Click += (_, __) => Close();
+            btnNuevoAlbaran.Click += BtnNuevoAlbaran_Click;
         }
 
         private void FacturaProveedorForm_Load(object sender, EventArgs e)
@@ -50,6 +51,20 @@ namespace HotelSOL1.FormsAPP
                 _service.Add(dlg.FacturaItem);
                 _list.Add(dlg.FacturaItem);
             }
+        }
+
+        private void BtnNuevoAlbaran_Click(object sender, EventArgs e)
+        {
+            
+            using var dlg = new AlbaranDialogForm(_pedidoSvc,_albaranSvc);
+            if (dlg.ShowDialog(this) != DialogResult.OK) return;
+
+       
+            var nuevo = dlg.AlbaranItem;
+           
+
+            MessageBox.Show($"Albarán #{nuevo.Id} creado para Pedido #{nuevo.IdPedido}.",
+                            "Albarán creado", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void BtnVerFactura_Click(object sender, EventArgs e)

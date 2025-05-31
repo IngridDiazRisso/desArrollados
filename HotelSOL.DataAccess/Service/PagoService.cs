@@ -7,25 +7,20 @@ namespace HotelSOL.DataAccess.Services
     public class PagoService
     {
         private readonly HotelSolContext _context;
-        private readonly ContabilidadService _contService;
 
-        public PagoService(
-            HotelSolContext context,
-            ContabilidadService contabilidadService)
+        public PagoService(HotelSolContext context)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
-            _contService = contabilidadService ?? throw new ArgumentNullException(nameof(contabilidadService));
         }
 
         /// <summary>
-        /// Registra un pago de la factura, marca la factura como pagada si corresponde
-        /// y genera el asiento contable (Debe Proveedores, Haber Banco).
+        /// Registra un pago de la factura y marca la factura como pagada si corresponde.
         /// </summary>
         public void RegistrarPago(int facturaId, string metodoPago)
         {
             using var tx = _context.Database.BeginTransaction();
 
-            // 1) Cargar la factura con sus pagos
+            // 1) Cargar la factura con sus pagos asociados
             var factura = _context.Facturas
                                   .Include(f => f.Pagos)
                                   .FirstOrDefault(f => f.Id == facturaId)
@@ -42,46 +37,13 @@ namespace HotelSOL.DataAccess.Services
             _context.Pagos.Add(pago);
             _context.SaveChanges();
 
-            // 3) Marcar factura como pagada si corresponde
+            // 3) Marcar factura como pagada si el total pagado (incluyendo este) cubre el monto total
             var totalPagado = factura.Pagos.Sum(p => p.Monto) + pago.Monto;
             if (totalPagado >= factura.MontoTotal)
             {
                 factura.Pagada = true;
                 _context.SaveChanges();
             }
-
-            // 4) Crear asiento contable
-            var asiento = new AsientoContable
-            {
-                Fecha = DateTime.Now,
-                Descripcion = $"Pago factura {factura.NumeroFactura}",
-                NumDocumento = factura.NumeroFactura
-            };
-            asiento = _contService.AddAsiento(asiento);
-
-            // 5) Obtener cuentas contables
-            var cuentaProv = _context.Cuentas.Single(c => c.Codigo == "4000"); // Proveedores
-            var cuentaBanco = _context.Cuentas.Single(c => c.Codigo == "5720"); // Banco
-
-            // 6a) Línea Debe: Proveedores
-            _contService.AddLinea(new LineaAsiento
-            {
-                AsientoContableId = asiento.Id,
-                CuentaId = cuentaProv.Id,
-                Debe = pago.Monto,
-                Haber = 0m,
-                Descripcion = $"Pago factura {factura.NumeroFactura}"
-            });
-
-            // 6b) Línea Haber: Banco
-            _contService.AddLinea(new LineaAsiento
-            {
-                AsientoContableId = asiento.Id,
-                CuentaId = cuentaBanco.Id,
-                Debe = 0m,
-                Haber = pago.Monto,
-                Descripcion = $"Pago factura {factura.NumeroFactura}"
-            });
 
             tx.Commit();
         }
@@ -107,6 +69,6 @@ namespace HotelSOL.DataAccess.Services
                            .ToList();
         }
 
-        // … aquí podrías añadir otros métodos relacionados con pagos …
+        // … aquí podrías añadir otros métodos relacionados con pagos si los necesitas …
     }
 }
